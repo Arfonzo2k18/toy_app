@@ -164,10 +164,6 @@ test:
         max_pool_size: 1
 
 production:
-  sessions:
+  clients:
     default:
-      hosts: 
-        - <%= ENV['MONGODB_URI'] %>
-      database: toy_app
-      username: prueba
-      password: prueba
+      uri: <%= ENV['MONGODB_URI'] %>
