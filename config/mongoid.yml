@@ -168,7 +168,7 @@ production:
     default:
       database: railsmongo
       hosts:
-      - 1.2.3.4
+        uri: <%= ENV['MONGODB_URI'] %>
       options:
         read:
         mode: :primary
