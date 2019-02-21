@@ -1,15 +1,16 @@
 development:
   # Configure available database clients. (required)
-    # Defines the default client. (required)
   clients:
+    # Defines the default client. (required)
     default:
-      database: railsmongo
+      # Defines the name of the default database that Mongoid can connect to.
+      # (required).
+      database: toy_app_development
+      # Provides the hosts the default client can connect to. Must be an array
+      # of host:port pairs. (required)
       hosts:
         - localhost:27017
       options:
-        read:
-          mode: :primary
-        max_pool_size: 1
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
         # for the most up-to-date list of options.
@@ -154,7 +155,7 @@ development:
 test:
   clients:
     default:
-      database: railsmongo_test
+      database: toy_app_test
       hosts:
         - localhost:27017
       options:
@@ -163,9 +164,14 @@ test:
         max_pool_size: 1
 
 production:
-    clients:
-        default:
-            uri: <%= ENV['MONGODB_URI'] %>
-        options:
-            skip_version_check: true
-        safe: true
+  clients:
+    default:
+      database: railsmongo
+      hosts:
+      - 1.2.3.4
+      options:
+        read:
+        mode: :primary
+        max_pool_size: 1
+        user: railsmongo
+        password: password1
